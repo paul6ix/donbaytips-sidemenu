@@ -1,0 +1,44 @@
+<ion-view>
+  <ion-nav-bar class="bar-assertive">
+    <ion-nav-buttons side="left">
+
+      <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+      </button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+      <button class="button button-icon button-clear ion-heart" ui-sref="main.favorites">
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-header-bar class="bar-assertive ">
+    <h4 class=" title stable "><div style="text-align: center;">Football News</div></h4>
+  </ion-header-bar>
+
+  <div class="bar bar-subheader item-input-inset">
+    <label class="item-input-inset">
+      <i class="icon placeholder-icon ion-ios-search "></i>
+      <input type="search" placeholder="Search..." ng-model="searchText">
+    </label>
+  </div>
+
+  <ion-content class="has-subheader">
+    <ion-refresher pulling-text="Pull down to refresh" on-refresh="DoRefresh()">
+
+    </ion-refresher>
+    <ion-list can-swipe="true">
+      <ion-item class="item item-thumbnail-left card item-text-wrap item-icon-right"
+                ng-repeat="article in articles | filter : {title : searchText}" href="#" >
+        <img ng-src="{{article.urlToImage}}">
+        <span> {{ article.title}}</span>
+        <ion-option-button class="button-dark">
+          <i class="icon ion-heart "></i>
+        </ion-option-button>
+
+      </ion-item>
+
+    </ion-list>
+    <ion-infinite-scroll ng-if="canLoadMore()" on-infinite="LoadMore()">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>
