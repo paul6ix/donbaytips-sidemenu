@@ -162,17 +162,18 @@ angular.module('starter')
 			$scope.post_authorName = data.data.post.author.first_name + " " + data.data.post.author.last_name;
 		      if($scope.post_authorName.trim() == '')
 		        $scope.post_authorName = "No Name";
-		      $scope.post_authorImage = 'http://ionicframework.com/img/docs/mcfly.jpg';
+		      $scope.post_authorImage = 'http://donbaystips.com.ng/wp-content/uploads/2017/07/logo.png';
 		      $scope.post_image = data.data.post.thumbnail_images.full.url;
 		      $scope.post_commentCount = data.data.post.comment_count;
 		      $scope.post_views = data.data.post.custom_fields.post_views_count[0];
-		      $scope.post_url = data.data.post.url;
+		      $scope.post_url = $sce.trustAsResourceUrl(data.data.post.url);
 		}, function(err){
 
 		})
 
+
 	$scope.Share = function(){
-		window.plugins.socialsharing.share($scope.post_title, $scope.post_title, $scope.post_image, $scope.post_url);
+		window.plugins.socialsharing.share($scope.post_title, $scope.categories,$scope.post_authorImage,$scope.post_url);
 	}
 
 })
@@ -261,6 +262,7 @@ angular.module('starter')
       $scope.articles = [];
       $http.get("https://newsapi.org/v2/top-headlines?sources=the-sport-bible&apiKey=d3a6e97988bd43a1833061e16e5b9b5c").then(function (newsData) {
           $scope.articles = newsData.data.articles;
+          $scope.PostUrl =$sce.trustAsResourceUrl(newsData.data.articles.url);
           console.log(newsData);
         },
         function (error) {
@@ -278,7 +280,11 @@ angular.module('starter')
 
         /*alert("No Internet Connection");*/
       })
+$scope.openlink = function () {
+  var opts = {toolbar: 'no',location: 'no',useWideViewPort: 'no',enableViewportScale: 'yes'}
+      window.open($scope.PostUrl,'_self', opts);
 
+}
   })
 
   .controller('LivescoreController', function () {

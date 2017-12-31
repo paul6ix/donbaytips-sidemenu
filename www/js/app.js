@@ -36,11 +36,11 @@ angular.module('starter', ['ionic', 'ngStorage', 'ngCordova'])
         templateUrl: 'templates/menu.html',
         controller: 'MenuCtrl'
       })
-      .state('main.contentByCategory', {
+      /*.state('main.contentByCategory', {
         url: '/contentByCategory/:catId',
         templateUrl: 'templates/contentByCategory.html',
         controller: 'CatCtrl'
-      })
+      })*/
       .state('main.contentRecent', {
         url: '/contentRecent',
         templateUrl: 'templates/menuContent.html',

@@ -1,5 +1,10 @@
 <ion-view>
 	<ion-nav-bar class="bar-assertive">
+    <!--<ion-nav-buttons side="left">
+
+      <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+      </button>
+    </ion-nav-buttons>-->
       <ion-nav-back-button class="button button-clear button-icon ion-arrow-left">
       </ion-nav-back-button>
 
@@ -10,7 +15,7 @@
       <ion-nav-buttons side="right">
         <button class="button button-icon button-clear ion-heart" ui-sref="main.favorites">
         </button>
-      </ion-nav-buttons>  
+      </ion-nav-buttons>
     </ion-nav-bar>
 	<ion-header-bar class="bar bar-assertive">
 		<div class="title"><center>{{category_title}} Posts</center></div>
@@ -28,7 +33,7 @@
 	  	</ion-refresher>
 		<div class="list">
 			<a class="item item-thumbnail-left item-text-wrap" href="#/main/postDetail/{{post.id}}" ng-repeat="post in category_posts | filter: {title:searchText}">
-		      <img ng-src="{{post.thumbnail}}">
+        <img src="http://donbaystips.com.ng/wp-content/uploads/2017/07/logo.png">
 		      <h2>{{post.title}}</h2>
 		      <p ng-bind-html="post.excerpt"></p>
 		    </a>

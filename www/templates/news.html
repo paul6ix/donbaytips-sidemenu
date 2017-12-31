@@ -28,9 +28,12 @@
     </ion-refresher>
     <ion-list can-swipe="true">
       <ion-item class="item item-thumbnail-left card item-text-wrap item-icon-right"
-                ng-repeat="article in articles | filter : {title : searchText}" href="#" >
+                ng-repeat="article in articles | filter : {title : searchText}">
         <img ng-src="{{article.urlToImage}}">
-        <span> {{ article.title}}</span>
+
+        <span> {{ article.title}}</span><br>
+        <a class="button button-assertive" href="{{article.url}}">Read article</a>
+       <!-- <a href="{{article.url}}" target="_self" >Read More</a>-->
         <ion-option-button class="button-dark">
           <i class="icon ion-heart "></i>
         </ion-option-button>
